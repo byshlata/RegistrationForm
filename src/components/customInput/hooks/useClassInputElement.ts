@@ -12,25 +12,16 @@ export const useClassInputElement = (
   error = '',
   disable = false,
 ): useClassInputElementReturnType => {
+  const isErrorInput = error ? style.customInputError : style.customInput;
   const classInput =
-    // eslint-disable-next-line no-nested-ternary
-    (disable && error) || disable
-      ? style.customInputDisable
-      : error
-      ? style.customInputError
-      : style.customInput;
+    (disable && error) || disable ? style.customInputDisable : isErrorInput;
 
+  const isErrorLabel = error ? style.customLabelError : style.customLabel;
   const classLabel =
-    // eslint-disable-next-line no-nested-ternary
-    (disable && error) || disable
-      ? style.customLabelDisable
-      : error
-      ? style.customLabelError
-      : style.customLabel;
+    (disable && error) || disable ? style.customLabelDisable : isErrorLabel;
 
-  const classBar =
-    // eslint-disable-next-line no-nested-ternary
-    (disable && error) || disable ? style.barDisable : error ? style.barError : style.bar;
+  const isErrorBar = error ? style.barError : style.bar;
+  const classBar = (disable && error) || disable ? style.barDisable : isErrorBar;
 
   const classSearchIcon =
     (disable && error) || disable ? style.iconButtonDisable : style.iconButtonSearch;

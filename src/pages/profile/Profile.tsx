@@ -47,7 +47,7 @@ export const Profile = (): ReactElement => {
   }, []);
 
   useEffect(() => {
-    if (!userFirstName) {
+    if (!userMobilePhone) {
       navigate(`${Path.Registration}${Path.SingUp}`);
     }
   }, []);

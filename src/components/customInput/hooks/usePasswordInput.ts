@@ -19,9 +19,9 @@ export const usePasswordInput = (
 ): usePasswordInputReturnType => {
   const [isWatchPassword, setIsWatchPassword] = useState<boolean>(false);
 
-  const typeInputValue =
-    // eslint-disable-next-line no-nested-ternary
-    type !== 'password' ? 'text' : isWatchPassword ? 'text' : 'password';
+  const watchValue = isWatchPassword ? 'text' : 'password';
+
+  const typeInputValue = type !== 'password' ? 'text' : watchValue;
 
   const onWatchPassword = (): void => {
     setIsWatchPassword(!isWatchPassword);

@@ -31,6 +31,7 @@ import {
   selectorUserFistName,
   selectorUserHobby,
   selectorUserLastName,
+  selectorUserMobilePhone,
   selectorUserSex,
   setPersonalInformationData,
   setRegistrationPage,
@@ -48,6 +49,7 @@ export const PersonalInformation = (): ReactElement => {
   const hobbySchemaData = useSelector(selectorHobby);
   const firstNameSchemaData = useSelector(selectorFirstName);
   const lastNameSchemaData = useSelector(selectorLastName);
+  const userMobilePhone = useSelector(selectorUserMobilePhone);
   const userFirstName = useSelector(selectorUserFistName);
   const userLastName = useSelector(selectorUserLastName);
   const userSex = useSelector(selectorUserSex);
@@ -67,7 +69,7 @@ export const PersonalInformation = (): ReactElement => {
   );
 
   useEffect(() => {
-    if (!userFirstName) {
+    if (!userMobilePhone) {
       navigate(`${Path.Registration}${Path.SingUp}`);
     }
   }, []);
