@@ -1,0 +1,28 @@
+$circleStepMainColor: rgba(24, 144, 255, 1)
+$circleStepWaitingColor: #00000040
+
+.finished, .processed, .waiting
+  position: relative
+  display: inline-block
+  width: 32px
+  height: 32px
+  margin: 0 8px 0 0
+  border-radius: 32px
+  box-sizing: border-box
+
+.item
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+.finished
+  border: 1px solid $circleStepMainColor
+
+.processed
+  background-color: $circleStepMainColor
+  color: #ffffff
+
+.waiting
+  border: 1px solid $circleStepWaitingColor
+  color: $circleStepWaitingColor

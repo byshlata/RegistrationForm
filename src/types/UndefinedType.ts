@@ -1,1 +1,1 @@
-export type Undefined<T> = undefined | T;
+export type UndefinedType<T> = undefined | T;

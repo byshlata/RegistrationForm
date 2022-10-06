@@ -1,26 +1,16 @@
-import { Path } from '../../../enums';
-import { RegistrationPageType } from '../../../types';
+import schemaData from '../../../data/schema.json';
+import { SchemaType } from '../../../types';
 import { store } from '../../store';
-import { setRegistrationPage } from '../appSlice';
+import { setSchemaData } from '../schemaSlice';
 
-describe('AppSlice', () => {
+describe('schemaSlice', () => {
   const { dispatch } = store;
-  let currentPage: RegistrationPageType;
-  const singUp = Path.SingUp;
-  const personalInformation = Path.PersonalInformation;
-  const profile = Path.Profile;
 
-  test('page path should be change', () => {
-    dispatch(setRegistrationPage(singUp));
-    currentPage = store.getState().app.registrationPage;
-    expect(currentPage).toBe(Path.SingUp);
+  const schema = schemaData as SchemaType;
 
-    dispatch(setRegistrationPage(personalInformation));
-    currentPage = store.getState().app.registrationPage;
-    expect(currentPage).toBe(Path.PersonalInformation);
-
-    dispatch(setRegistrationPage(profile));
-    currentPage = store.getState().app.registrationPage;
-    expect(currentPage).toBe(Path.Profile);
+  test('schema should be downloaded', () => {
+    dispatch(setSchemaData(schema));
+    const schemaState = store.getState().schema;
+    expect(schemaState).toEqual(schema);
   });
 });

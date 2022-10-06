@@ -1,0 +1,5 @@
+*.css
+*.json
+*.d.ts
+*useStylePrimarySearchAppBar.ts
+*enum

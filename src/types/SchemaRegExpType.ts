@@ -1,3 +1,3 @@
 import { SchemaSimpleType } from './SchemaSimpleType';
 
-export type SxhemaEmailType = SchemaSimpleType<{ regExp: string }>;
+export type SchemaRegExpType = SchemaSimpleType<{ regExp: string }>;

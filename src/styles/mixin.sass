@@ -1,0 +1,13 @@
+@mixin elementStyle($height, $direction, $color)
+  width: 100%
+  height: $height
+  color: inherit
+  flex: 0 0 auto
+  +gradient($direction, $color)
+
+@mixin gradient($direction, $list)
+  background: -webkit-linear-gradient($direction, $list)
+  background: -moz-linear-gradient($direction, $list)
+  background: -o-linear-gradient($direction, $list)
+  background: linear-gradient($direction, $list)
+Q

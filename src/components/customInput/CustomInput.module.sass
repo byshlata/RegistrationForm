@@ -1,0 +1,127 @@
+$colorPrimary: rgba(21, 43, 100, 1)
+$colorSecondary: rgba(144, 201, 32, 1)
+$colorDanger: rgba(255, 5, 0, 1)
+$colorDisabled: rgba(134, 131, 131, 0.4)
+$colorLabel: rgba(203, 199, 199, 1)
+$colorWhite: rgba(255, 255, 255, 1)
+$colorBlack: rgba(0, 0, 0, 1)
+$width: 350px
+
+@mixin inputLabelOption ($color)
+  &:valid
+    ~.customLabelError
+      color: $color
+  &:focus
+    ~.customLabelError
+      color: $color
+
+.centered
+  width: 100%
+  height: $width/5
+  margin: 0 auto
+  .group
+    width: 100%
+    height: $width/5
+    overflow: hidden
+    position: relative
+    box-sizing: border-box
+    input
+      .pt1
+        background-color: #293b49
+
+.customLabel, .customLabelError, .customLabelDisable
+  position: absolute
+  top: $width/20
+  color: $colorPrimary
+  font-size: $width/20
+  cursor: text
+  transition: .25s ease
+  font-family: Montserrat, serif
+  pointer-events: none
+
+.customInput, .customInputError, .customInputDisable
+  display: block
+  width: 100%
+  box-sizing: border-box
+  padding-top: $width/15
+  padding-right: $width/10
+  border: none
+  border-radius: 0
+  background: $colorWhite
+  font-size: $width/15
+  transition: .3s ease
+  &:valid
+    ~.customLabel, ~.customLabelError, ~.customLabelDisable
+      top: 0
+      font-size: $width/25
+      color: $colorLabel
+  &:focus
+    outline: none
+    ~.customLabel, ~.customLabelError, ~.customLabelDisable
+      top: 0
+      font-size: $width/25
+      color: $colorLabel
+  ~.bar:before, ~.barError:before, ~.barDisable:before
+      transform: translateX(0)
+  &:-webkit-autofill
+    color: black
+    -webkit-box-shadow: inset 0 0 0 1000px $colorWhite
+    -webkit-text-fill-color: $colorBlack !important
+
+.customInputError
+  +inputLabelOption($colorDanger)
+
+.customInputDisable
+  cursor: no-drop
+  +inputLabelOption($colorDisabled)
+
+.customLabelDisable
+  cursor: no-drop
+  color: $colorDisabled
+
+.bar, .barError, .barDisable
+  background: $colorPrimary
+  width: 100%
+  height: $width/150
+  transition: .3s ease
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    width: 100%
+    height: 150%
+    background: $colorPrimary
+    transform: translateX(-100%)
+
+.barError
+  background: $colorDanger
+  &:before
+    content: ''
+    background: $colorDanger
+
+.barDisable
+  background: $colorDisabled
+  &:before
+    background: $colorDisabled
+
+::selection
+  background: $colorLabel
+
+.iconButton, .iconButtonSearch, .iconButtonDisable
+  position: absolute
+  right: 0
+  bottom: 35%
+  border: none
+  background: none
+  cursor: pointer
+  padding: 4px
+  height: 40%
+
+.iconButtonSearch, .iconButtonDisable
+  pointer-events: none
+  cursor: no-drop
+  opacity: 1
+
+.iconButtonSearch
+  cursor: no-drop
+  border-left: 2px solid $colorLabel

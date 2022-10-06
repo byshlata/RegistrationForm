@@ -1,50 +1,68 @@
-import React, { ChangeEvent, InputHTMLAttributes, DetailedHTMLProps } from 'react';
+$borderRadiusRadioActiveColor: #FF1493
+$borderShadowRadiusRadioActiveColor: #FF00FF
+$shadowHoverRadio: #FFFAFA
+$borderRadiusRadioColor: #A9A9A9
 
-import s from './SuperRadio.module.sass';
+.radioWrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
 
-type DefaultRadioPropsType = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+.labelStyle, .labelStyleActive
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  opacity: 0.8
+  width: 10px
+  margin: 10px
+  color: black
+  transition: 0.5s
 
-type SuperRadioPropsType = DefaultRadioPropsType & {
-  options?: Array<string>;
-  onChangeOption?: (option: string) => void;
-};
+.labelStyleActive
+  color: $borderShadowRadiusRadioActiveColor
 
-const SuperRadio: React.FC<SuperRadioPropsType> = ({
-  type,
-  name,
-  options,
-  value,
-  onChange,
-  onChangeOption,
-  ...restProps
-}) => {
-  const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-    if (onChangeOption) {
-      onChangeOption(e.currentTarget.value);
-    }
-  };
+.inputStyleActive
+  -moz-appearance: none
+  appearance: none
+  transform: scale(1.1)
+  margin: 0
+  border-radius: 50%
+  width: 16px
+  height: 16px
+  border: 2px solid $borderRadiusRadioActiveColor
+  transition: 0.2s all linear
+  outline: none
+  position: relative
+  top: 4px
+  box-shadow: 0 0 1px $borderShadowRadiusRadioActiveColor, 0 0 3px $borderShadowRadiusRadioActiveColor, 0 0 10px $borderShadowRadiusRadioActiveColor
+  &:before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: inline-block
+    width: 70%
+    height: 70%
+    background-color: $borderShadowRadiusRadioActiveColor
+    border-radius: 50%
+    box-shadow: 0 0 1px $borderShadowRadiusRadioActiveColor, 0 0 1px $borderShadowRadiusRadioActiveColor, 0 0 2px $borderShadowRadiusRadioActiveColor
+    transition: 0.5s
 
-  const mappedOptions: JSX.Element[] = options
-    ? options.map((o, i) => (
-        <label
-          key={`${name}-${i}`}
-          className={o === value ? s.labelStyleActive : s.labelStyle}
-        >
-          <input
-            type="radio"
-            name={name}
-            checked={o === value}
-            value={o}
-            onChange={onChangeCallback}
-            className={o === value ? s.inputStyleActive : s.inputStyle}
-          />
-          {o}
-        </label>
-      ))
-    : [];
-
-  return <>{mappedOptions}</>;
-};
+.inputStyle
+  -moz-appearance: none
+  appearance: none
+  margin: 0
+  border-radius: 50%
+  width: 16px
+  height: 16px
+  border: 2px solid $borderRadiusRadioColor
+  transition: 0.2s all linear
+  outline: none
+  position: relative
+  top: 4px
+  background-color: $shadowHoverRadio
+  &:hover
+    box-shadow: 0 0 1px $borderShadowRadiusRadioActiveColor, 0 0 2px $borderShadowRadiusRadioActiveColor, 0 0 4px $borderShadowRadiusRadioActiveColor
+    transform: scale(1.05)

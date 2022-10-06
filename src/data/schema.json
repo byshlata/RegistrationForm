@@ -1,13 +1,13 @@
 {
     "firstName": {
       "required": true,
-      "minLength": "2",
-      "maxLength": "30"
+      "minLength": 2,
+      "maxLength": 30
     },
     "lastName": {
       "required": true,
-      "minLength": "2",
-      "maxLength": "30"
+      "minLength": 2,
+      "maxLength": 30
     },
     "mobilePhone": {
       "required": true,
@@ -15,8 +15,8 @@
     },
     "password": {
       "required": true,
-      "minLength": "8",
-      "maxLength": "20"
+      "minLength": 8,
+      "maxLength": 20
     },
     "email": {
       "required": true,
@@ -24,8 +24,8 @@
     },
     "birthday": {
       "required": true,
-      "minAge": "18",
-      "maxAge": "90"
+      "minAge": 18,
+      "maxAge": 90
     },
     "ocean": {
       "required": true,
@@ -46,6 +46,7 @@
       ]
     },
     "sex": {
-      "required": true
+      "required": true,
+      "oneOf": ["male","female" ,"other"]
     }
 }

@@ -1,5 +1,4 @@
-export type SchemaNameType = {
-  required: boolean;
+export type SchemaInputType = {
   minLength: number;
   maxLength: number;
 };
