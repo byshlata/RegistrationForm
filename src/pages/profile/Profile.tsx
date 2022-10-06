@@ -28,7 +28,7 @@ const DALEY = 1000;
 export const Profile = (): ReactElement => {
   const dispatch = useAppDispatch();
 
-  const userMobilePhone = useSelector(selectorUserMobilePhone);
+  const userNumberPhone = useSelector(selectorUserMobilePhone);
   const userEmail = useSelector(selectorUserEmail);
   const userPassword = useSelector(selectorUserPassword);
   const userFirstName = useSelector(selectorUserFistName);
@@ -47,7 +47,7 @@ export const Profile = (): ReactElement => {
   }, []);
 
   useEffect(() => {
-    if (!userMobilePhone) {
+    if (!userNumberPhone) {
       navigate(`${Path.Registration}${Path.SingUp}`);
     }
   }, []);
@@ -65,7 +65,7 @@ export const Profile = (): ReactElement => {
   const userData = creatArrayData({
     firstName: userFirstName,
     lastName: userLastName,
-    mobilePhone: userMobilePhone,
+    mobilePhone: userNumberPhone,
     email: userEmail,
     password: userPassword,
     birthday: userBirthday,

@@ -62,9 +62,9 @@ export const PersonalInformation = (): ReactElement => {
       birthdayMinAge: birthdaySchemaData.minAge,
       birthdayMaxAge: birthdaySchemaData.maxAge,
       firstNameMaxLength: firstNameSchemaData.maxLength,
-      lastNameMaxLength: firstNameSchemaData.minLength,
+      firstNameMinLength: firstNameSchemaData.minLength,
+      lastNameMaxLength: lastNameSchemaData.maxLength,
       lastNameMinLength: lastNameSchemaData.minLength,
-      firstNameMinLength: lastNameSchemaData.minLength,
     }),
   );
 
